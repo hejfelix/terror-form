@@ -53,24 +53,19 @@ describe('action', () => {
   })
 
   it('works', async () => {
-    const json = JSON.stringify(
-      {
-        resource_changes: [
-          {
-            change: {
-              actions: ['no-op'],
-              before: { foo: 'bar' },
-              after: { foo: 'baz' }
-            },
-            address: 'module.foo.bar'
-          }
-        ]
-      },
-      null,
-      0
-    )
+    const json = JSON.stringify({
+      resource_changes: [
+        {
+          change: {
+            actions: ['no-op'],
+            before: { foo: 'bar' },
+            after: { foo: 'baz' }
+          },
+          address: 'module.foo.bar'
+        }
+      ]
+    })
 
-    console.log(json)
     // Set the action's inputs as return values from core.getInput()
     getInputMock.mockImplementation(name => {
       switch (name) {

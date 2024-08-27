@@ -28263,6 +28263,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.run = void 0;
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * The entrypoint for the action.
  */
@@ -28273,7 +28274,7 @@ const run = () => {
         const planJson = JSON.parse(core.getInput('plan-json'));
         const shouldUpdateTaskSummary = core.getInput('should-update-task-summary') === 'true';
         const allNonNoOpObjects = planJson.resource_changes.filter((resource) => resource.change.actions.includes('no-op'));
-        var markdown = ''; // To save you the trouble – yes `+=` is the fastest way to build strings: https://jsperf.app/join-concat/2 (and it's not even close)
+        let markdown = ''; // To save you the trouble – yes `+=` is the fastest way to build strings: https://jsperf.app/join-concat/2 (and it's not even close)
         for (const resource of allNonNoOpObjects) {
             const diff = json_diff_1.default.diffString(resource.change.before, resource.change.after, { color: false });
             markdown += `## ${resource.address}\n\n`;

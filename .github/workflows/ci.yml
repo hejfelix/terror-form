@@ -61,8 +61,5 @@ jobs:
           should-update-task-summary: 'true'
 
       - name: Print Output
-        uses: actions/github-script@v7
         id: output
-        with:
-          script: console.log(core.outputs['diff-as-markdown'])
-          
+        run: echo "${{ steps.test-action.outputs.diff-as-markdown }}"

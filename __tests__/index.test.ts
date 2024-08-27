@@ -37,8 +37,11 @@ describe('action', () => {
       }
     })
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     setOutputMock.mockImplementation((_name, _value) => {})
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     addRawMock.mockImplementation((_markdown, _addEOL) => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       return {} as any
     })
 
@@ -80,8 +83,11 @@ describe('action', () => {
       }
     })
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     setOutputMock.mockImplementation((_name, _value) => {})
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     addRawMock.mockImplementation((_markdown, _addEOL) => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       return {} as any
     })
 

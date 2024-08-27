@@ -1,10 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * The entrypoint for the action.
  */
 import * as core from '@actions/core'
 import jsonDiff from 'json-diff'
 
-export const run = () => {
+export const run: () => void = () => {
   try {
     const planJson: any = JSON.parse(core.getInput('plan-json'))
     const shouldUpdateTaskSummary: boolean =
@@ -14,7 +15,7 @@ export const run = () => {
       (resource: any) => resource.change.actions.includes('no-op')
     )
 
-    var markdown = '' // To save you the trouble – yes `+=` is the fastest way to build strings: https://jsperf.app/join-concat/2 (and it's not even close)
+    let markdown = '' // To save you the trouble – yes `+=` is the fastest way to build strings: https://jsperf.app/join-concat/2 (and it's not even close)
     for (const resource of allNonNoOpObjects) {
       const diff = jsonDiff.diffString(
         resource.change.before,

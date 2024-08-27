@@ -57,7 +57,8 @@ jobs:
         id: test-action
         uses: ./
         with:
-          milliseconds: 2000
+          plan-json: '{"resource_changes":[{"change":{"actions":["no-op"],"before":{"foo":"bar"},"after":{"foo":"baz"}},"address":"module.foo.bar"}]}'
+          should-update-task-summary: 'true'
 
       - name: Print Output
         id: output

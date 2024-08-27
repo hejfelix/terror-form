@@ -1,6 +1,7 @@
-name: 'The name of your action here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'Terror-Form'
+description: 'A GitHub Action create markdown diffs from your Terraform plan'
+
+author: 'Felix Bjært Hargreaves'
 
 # Add your action's branding here. This will appear on the GitHub Marketplace.
 branding:
@@ -9,15 +10,19 @@ branding:
 
 # Define your inputs here.
 inputs:
-  milliseconds:
-    description: 'Your input description here'
+  plan-json:
+    description: 'The Terraform plan as JSON'
     required: true
-    default: '1000'
+  should-update-task-summary:
+    description:
+      'Update the task summary with the diff markdown if set to `true`'
+    required: false
+    default: 'false'
 
 # Define your outputs here.
 outputs:
-  time:
-    description: 'Your output description here'
+  diff-as-markdown:
+    description: 'The diff as markdown'
 
 runs:
   using: node20

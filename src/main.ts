@@ -30,10 +30,9 @@ export const run: () => void = () => {
       markdown += '```\n\n'
 
       if (shouldUpdateTaskSummary) {
-        core.summary.addRaw(markdown)
+        core.summary.addRaw(markdown).write()
       }
     }
-    core.debug(`Diff as markdown: ${markdown}`)
     core.setOutput('diff-as-markdown', markdown)
   } catch (error) {
     // Fail the workflow run if an error occurs

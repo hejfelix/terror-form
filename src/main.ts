@@ -33,7 +33,7 @@ export const run: () => void = () => {
         core.summary.addRaw(markdown)
       }
     }
-
+    core.debug(`Diff as markdown: ${markdown}`)
     core.setOutput('diff-as-markdown', markdown)
   } catch (error) {
     // Fail the workflow run if an error occurs

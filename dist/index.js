@@ -28230,7 +28230,7 @@ exports["default"] = _default;
 
 /***/ }),
 
-/***/ 6144:
+/***/ 399:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -28271,7 +28271,8 @@ const core = __importStar(__nccwpck_require__(2186));
 const json_diff_1 = __importDefault(__nccwpck_require__(9031));
 const run = () => {
     try {
-        const planJson = JSON.parse(core.getInput('plan-json'));
+        const planJsonString = core.getInput('plan-json');
+        const planJson = JSON.parse(planJsonString);
         const shouldUpdateTaskSummary = core.getInput('should-update-task-summary') === 'true';
         const allNonNoOpObjects = planJson.resource_changes.filter((resource) => resource.change.actions.includes('no-op'));
         let markdown = ''; // To save you the trouble – yes `+=` is the fastest way to build strings: https://jsperf.app/join-concat/2 (and it's not even close)
@@ -28284,7 +28285,6 @@ const run = () => {
             if (shouldUpdateTaskSummary) {
                 core.summary.addRaw(markdown);
             }
-            console.log(`MARKDOWN: ${markdown}`);
         }
         core.setOutput('diff-as-markdown', markdown);
     }
@@ -28295,7 +28295,6 @@ const run = () => {
     }
 };
 exports.run = run;
-(0, exports.run)();
 
 
 /***/ }),
@@ -30187,13 +30186,19 @@ module.exports = parseParams
 /******/ 	if (typeof __nccwpck_require__ !== 'undefined') __nccwpck_require__.ab = __dirname + "/";
 /******/ 	
 /************************************************************************/
-/******/ 	
-/******/ 	// startup
-/******/ 	// Load entry module and return exports
-/******/ 	// This entry module is referenced by other modules so it can't be inlined
-/******/ 	var __webpack_exports__ = __nccwpck_require__(6144);
-/******/ 	module.exports = __webpack_exports__;
-/******/ 	
+var __webpack_exports__ = {};
+// This entry need to be wrapped in an IIFE because it need to be in strict mode.
+(() => {
+"use strict";
+var exports = __webpack_exports__;
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const main_1 = __nccwpck_require__(399);
+(0, main_1.run)();
+
+})();
+
+module.exports = __webpack_exports__;
 /******/ })()
 ;
 //# sourceMappingURL=index.js.map

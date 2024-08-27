@@ -28286,6 +28286,7 @@ const run = () => {
                 core.summary.addRaw(markdown);
             }
         }
+        core.debug(`Diff as markdown: ${markdown}`);
         core.setOutput('diff-as-markdown', markdown);
     }
     catch (error) {

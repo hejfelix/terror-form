@@ -9,8 +9,6 @@
 import * as core from '@actions/core'
 import * as main from '../src/index'
 
-// Mock the action's main function
-const runMock = jest.spyOn(main, 'run')
 
 // Mock the GitHub Actions core library
 let getInputMock: jest.SpiedFunction<typeof core.getInput>
@@ -40,8 +38,8 @@ describe('action', () => {
       }
     })
 
-    setOutputMock.mockImplementation((name, value) => {})
-    addRawMock.mockImplementation((markdown, addEOL) => {
+    setOutputMock.mockImplementation((_name, _value) => {})
+    addRawMock.mockImplementation((_markdown, _addEOL) => {
       return {} as any
     })
 
@@ -83,8 +81,8 @@ describe('action', () => {
       }
     })
 
-    setOutputMock.mockImplementation((name, value) => {})
-    addRawMock.mockImplementation((markdown, addEOL) => {
+    setOutputMock.mockImplementation((_name, _value) => {})
+    addRawMock.mockImplementation((_markdown, _addEOL) => {
       return {} as any
     })
 

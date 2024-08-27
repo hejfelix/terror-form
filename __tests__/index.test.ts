@@ -7,7 +7,7 @@
  */
 
 import * as core from '@actions/core'
-import * as main from '../src/index'
+import * as main from '../src/main'
 
 // Mock the GitHub Actions core library
 let getInputMock: jest.SpiedFunction<typeof core.getInput>
@@ -31,9 +31,9 @@ describe('action', () => {
         case 'should-update-task-summary':
           return 'true'
         case 'plan-json':
-          return '{}'
+          return JSON.stringify({})
         default:
-          return ''
+          return '{}'
       }
     })
 
@@ -53,26 +53,25 @@ describe('action', () => {
   })
 
   it('works', async () => {
-    const json = JSON.stringify({
-      resource_changes: [
-        {
-          change: {
-            actions: ['no-op'],
-            before: { foo: 'bar' },
-            after: { foo: 'baz' }
-          },
-          address: 'module.foo.bar'
-        }
-      ]
-    })
-
     // Set the action's inputs as return values from core.getInput()
     getInputMock.mockImplementation(name => {
       switch (name) {
         case 'should-update-task-summary':
           return 'true'
         case 'plan-json':
-          return json
+          return JSON.stringify({
+            resource_changes: [
+              {
+                change: {
+                  actions: ['no-op'],
+                  before: { foo: 'bar' },
+                  after: { foo: 'baz' }
+                },
+                address: 'module.foo.bar'
+              }
+            ]
+          })
+
         default:
           return ''
       }

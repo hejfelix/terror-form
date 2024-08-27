@@ -9,7 +9,6 @@
 import * as core from '@actions/core'
 import * as main from '../src/index'
 
-
 // Mock the GitHub Actions core library
 let getInputMock: jest.SpiedFunction<typeof core.getInput>
 let setOutputMock: jest.SpiedFunction<typeof core.setOutput>
